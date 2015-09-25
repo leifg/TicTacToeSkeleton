@@ -9,16 +9,16 @@ describe GamesHelper do
     it "should display @board element" do
       @test_game.update_board('x', 0, 1)
 
-      @test_game.display_element(0,1).should == 'x'
+      expect(@test_game.display_element(0,1)).to eq('x')
     end
 
     it "should display a space if the element is nil" do
-      @test_game.display_element(0,0).should == ' '
+      expect(@test_game.display_element(0,0)).to eq(' ')
     end
 
     it "should display an 'x' or an 'o' if the element is not a space" do
       @test_game.update_board('x', 0, 1)
-      @test_game.display_element(0,1).should == 'x'
+      expect(@test_game.display_element(0,1)).to eq('x')
     end
   end
 
@@ -27,17 +27,17 @@ describe GamesHelper do
       @test_game.update_board('x', 0, 2)
 
       to_test = @test_game.display_line(0)
-      to_test.should == " | |x\n"
+      expect(to_test).to eq(" | |x\n")
     end
   end
 
   describe "display_board" do
     it "should display board" do
-      @test_game.display_board.should == " | | \n" +
-                                         "- - -\n" +
-                                         " | | \n" +
-                                         "- - -\n" +
-                                         " | | \n"
+      expect(@test_game.display_board).to eq(" | | \n" +
+                                             "- - -\n" +
+                                             " | | \n" +
+                                             "- - -\n" +
+                                             " | | \n")
     end
 
     it "should display player marks on the board" do
@@ -45,11 +45,11 @@ describe GamesHelper do
       @test_game.update_board('o', 1, 1)
       @test_game.update_board('x', 2, 2)
 
-      @test_game.display_board.should == "x| | \n" +
-                                         "- - -\n" +
-                                         " |o| \n" +
-                                         "- - -\n" +
-                                         " | |x\n"
+      expect(@test_game.display_board).to eq("x| | \n" +
+                                             "- - -\n" +
+                                             " |o| \n" +
+                                             "- - -\n" +
+                                             " | |x\n")
     end
 
     it "should display player marks on the board" do
@@ -57,11 +57,11 @@ describe GamesHelper do
       @test_game.update_board('o', 1, 1)
       @test_game.update_board('x', 2, 2)
 
-      @test_game.display_board.should == "x| | \n" +
-                                         "- - -\n" +
-                                         " |o| \n" +
-                                         "- - -\n" +
-                                         " | |x\n"
+      expect(@test_game.display_board).to  eq("x| | \n" +
+                                              "- - -\n" +
+                                              " |o| \n" +
+                                              "- - -\n" +
+                                              " | |x\n")
     end
   end
 

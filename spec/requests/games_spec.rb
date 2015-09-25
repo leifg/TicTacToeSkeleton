@@ -4,9 +4,9 @@ describe "Games" do
 
   subject { page }
 
-  shared_examples_for "all games pages" do
-    it { should have_selector('h1', text: heading) }
-    it { should have_selector('title', text: full_title(page_title)) }
+  shared_examples_for "an all games pages" do
+    it { is_expected.to have_selector('h1', text: heading) }
+    it { is_expected.to have_selector('title', text: full_title(page_title)) }
   end
 
   describe "Index page" do
@@ -15,13 +15,13 @@ describe "Games" do
     let(:heading)    { "Let's Play TicTacToe!" }
     let(:page_title) { '' }
 
-    it_should_behave_like "all games pages"
+    it_behaves_like "an all games pages"
 
     it "should have a link to the game" do
       visit root_path
 
       click_link 'Start Game!'
-      page.should have_selector 'title', text: full_title('Play Game')
+      expect(page).to have_selector 'title', text: full_title('Play Game')
     end
   end
 
@@ -32,14 +32,14 @@ describe "Games" do
     let(:heading)    { 'Play Game' }
     let(:page_title) { 'Play Game' }
 
-    it_should_behave_like "all games pages"
+    it_behaves_like "an all games pages"
 
     it "should show the updated board when a square is clicked" do
       within '.top.left' do
         find("input[type='submit']").click
       end
 
-      page.should have_selector 'td', text: 'x'
+      expect(page).to have_selector 'td', text: 'x'
     end
   end
 
@@ -49,6 +49,6 @@ describe "Games" do
     visit root_path
 
     click_link 'Start Game'
-    page.should have_selector 'title', text: full_title('Play Game')
+    expect(page).to have_selector 'title', text: full_title('Play Game')
   end
 end
