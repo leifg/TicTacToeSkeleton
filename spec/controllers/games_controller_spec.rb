@@ -1,6 +1,6 @@
 # GamesController_controller_spec
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe GamesController do
 	describe "games#index" do

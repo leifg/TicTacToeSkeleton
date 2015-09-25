@@ -1,27 +1,27 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Game do 
+describe Game do
 	before do
 		@test_game = Game.new
 	end
 
 	describe "board" do
 		it "should be initialized with nil values inside of the array, [[]]" do
-			@test_game.board.should == [[nil, nil, nil], 
-									    						[nil, nil, nil], 
-									    						[nil, nil, nil]] 
+			@test_game.board.should == [[nil, nil, nil],
+									    						[nil, nil, nil],
+									    						[nil, nil, nil]]
 		end
 
-		it "should always have a length of 3" do 
+		it "should always have a length of 3" do
 			@test_game.board.length.should == 3
 		end
 
 		it "should always have the array within the array length of 3" do
-			@test_game.board.each { |array| array.length.should == 3 } 		
-		end 
+			@test_game.board.each { |array| array.length.should == 3 }
+		end
 	end
 
-	describe "update_board" do 
+	describe "update_board" do
 		it "should establish a position on the board, using 'x' or 'o'" do
 			@test_game.update_board('x', 0, 1)
 			@test_game.board[0][1].should == 'x'
@@ -58,19 +58,19 @@ describe Game do
 		end
 	end
 
-	describe "play" do 
+	describe "play" do
 	  it "should set the first player, 'x', to a position on the board" do
 	  	@test_game.play(0, 1)
-			@test_game.board.should == [[nil, 'x', nil], 
-									    					  [nil, nil, nil], 
+			@test_game.board.should == [[nil, 'x', nil],
+									    					  [nil, nil, nil],
 									    					  [nil, nil, nil]]
 		end
 
 		it "should set the second player, 'o', to a position on the board" do
 		 	@test_game.play(0, 1)
 		 	@test_game.play(2, 1)
-		 	@test_game.board.should == [[nil, 'x', nil], 
-									    					  [nil, nil, nil], 
+		 	@test_game.board.should == [[nil, 'x', nil],
+									    					  [nil, nil, nil],
 									    					  [nil, 'o', nil]]
 		end
 
@@ -92,7 +92,7 @@ describe Game do
       @test_game.play(2,2)
       @test_game.play(1,2).should == "Player o is the winner!"
     end
-	end 
+	end
 
   describe "winner" do
     it "should return 'x' the first row is filled with x's" do
@@ -102,7 +102,7 @@ describe Game do
 
       @test_game.winner.should == 'x'
     end
-    
+
     it "should return 'd' if the second row is filled with o's" do
       @test_game.update_board('o', 1, 0)
       @test_game.update_board('o', 1, 1)

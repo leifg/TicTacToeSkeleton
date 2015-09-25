@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe GamesHelper do
   before do
@@ -22,8 +22,8 @@ describe GamesHelper do
     end
   end
 
-  describe "display_line" do 
-    it "should display player marks or a space (if nil) in the designated row" do 
+  describe "display_line" do
+    it "should display player marks or a space (if nil) in the designated row" do
       @test_game.update_board('x', 0, 2)
 
       to_test = @test_game.display_line(0)
@@ -31,9 +31,9 @@ describe GamesHelper do
     end
   end
 
-  describe "display_board" do 
-    it "should display board" do 
-      @test_game.display_board.should == " | | \n" + 
+  describe "display_board" do
+    it "should display board" do
+      @test_game.display_board.should == " | | \n" +
                                          "- - -\n" +
                                          " | | \n" +
                                          "- - -\n" +
@@ -45,7 +45,7 @@ describe GamesHelper do
       @test_game.update_board('o', 1, 1)
       @test_game.update_board('x', 2, 2)
 
-      @test_game.display_board.should == "x| | \n" + 
+      @test_game.display_board.should == "x| | \n" +
                                          "- - -\n" +
                                          " |o| \n" +
                                          "- - -\n" +
@@ -57,7 +57,7 @@ describe GamesHelper do
       @test_game.update_board('o', 1, 1)
       @test_game.update_board('x', 2, 2)
 
-      @test_game.display_board.should == "x| | \n" + 
+      @test_game.display_board.should == "x| | \n" +
                                          "- - -\n" +
                                          " |o| \n" +
                                          "- - -\n" +

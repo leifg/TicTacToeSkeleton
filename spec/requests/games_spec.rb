@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Games" do
-  
+
   subject { page }
 
   shared_examples_for "all games pages" do
