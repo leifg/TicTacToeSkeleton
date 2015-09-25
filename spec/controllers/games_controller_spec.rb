@@ -49,7 +49,7 @@ describe GamesController do
     end
 
     describe 'with invalid params' do
-      invalid_id = Game.last.nil? ? 1 : (Game.last.id + 1)
+      _invalid_id = Game.last.nil? ? 1 : (Game.last.id + 1)
       let(:request) { get :show, :id => 1 }
 
       it "should not create a new game object" do
