@@ -1,15 +1,10 @@
 class Game < ActiveRecord::Base
-  # Saves the board in the database as an object, 
+  # Saves the board in the database as an object,
   # and allows you to retrieve as the same object
   serialize :board
-  
+
   include GamesHelper
   include ActiveModel::Validations
-
-  # This line tells Rails which attributes of the model are accessible, i.e., 
-  # which attributes can be modified automatically by outside users 
-  # (such as users submitting requests with web browsers).
-  attr_accessible :board
 
   validates :board, :presence => true
 
@@ -23,7 +18,7 @@ class Game < ActiveRecord::Base
   # NOTE ActiveRecord::Base does not have a #create method.
   def initialize
     super
-    self.board = Array.new(3).map{[nil, nil, nil]} 
+    self.board = Array.new(3).map{[nil, nil, nil]}
   end
 
   # Updates the board based on player, row, and column
@@ -33,7 +28,7 @@ class Game < ActiveRecord::Base
   # @param column [Integer] 0-2
   # @return [Boolean] Save successful?
   # @return ArgumentError
-  # 
+  #
   # use helpers/games_helper to see board in the terminal
   def update_board(player, row, column)
     # TODO
@@ -46,7 +41,7 @@ class Game < ActiveRecord::Base
   end
 
   # Plays the game
-  # 
+  #
   # @returns winner
   # updates the board
   # call #WINNER AFTER each move, not before
